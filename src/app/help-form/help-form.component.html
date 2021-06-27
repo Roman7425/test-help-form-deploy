@@ -1,0 +1,51 @@
+<div class="form-wrap">
+    <div class="header-form">
+        <h1>
+            Get in touch
+        </h1>
+        <p>
+            Leave your message and we'll get back to you shortly.
+        </p>
+    </div>
+    <form [formGroup]="helpForm">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input formControlName="name" [class.input-error]="helpForm.get('name').invalid && helpForm.get('name').dirty && helpForm.get('name').touched" type="text" class="form-control" placeholder="name">
+            <small class="errors" *ngIf="!helpForm.get('name').valid && helpForm.get('name').dirty && helpForm.get('name').touched">
+                empty name!
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Phone</label>
+            <input formControlName="phone" [class.input-error]="helpForm.get('phone').invalid && helpForm.get('phone').dirty && helpForm.get('phone').touched" type="text" class="form-control" placeholder="phone">
+            <small class="errors" *ngIf="helpForm.get('phone').errors && helpForm.get('phone').errors?.required && helpForm.get('phone').dirty && helpForm.get('phone').touched">
+                empty phone!
+            </small>
+            <small class="errors" *ngIf="helpForm.get('phone').errors && helpForm.get('phone').errors.pattern && helpForm.get('phone').touched">
+                invalid phone number!
+            </small>
+            <small class="errors" *ngIf="helpForm.get('phone').errors && helpForm.get('phone').errors.minlength && helpForm.get('phone').touched">
+                min length 8!
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input formControlName="email" [class.input-error]="helpForm.get('email').invalid && helpForm.get('email').dirty && helpForm.get('email').touched" type="email" class="form-control" placeholder="email">
+            <small class="errors" *ngIf="helpForm.get('email').errors && helpForm.get('email').errors.required && helpForm.get('email').dirty && helpForm.get('email').touched">
+                empty email!
+            </small>
+            <small class="errors" *ngIf="helpForm.get('email').errors && helpForm.get('email').errors.email && helpForm.get('email').touched">
+                invalid email!
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Message</label>
+            <textarea formControlName="message" [class.input-error]="helpForm.get('message').invalid && helpForm.get('message').dirty && helpForm.get('message').touched" type="text" class="form-control" placeholder="yours message">
+            </textarea>
+        </div>
+        <button type="submit" (click)="saveMessage()" [disabled]="!helpForm.valid" class="btn btn-primary">Submit</button>
+    </form>
+</div>

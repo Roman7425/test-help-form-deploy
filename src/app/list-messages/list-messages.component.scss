@@ -1,0 +1,19 @@
+.form-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-top: 5%;
+    border: 3px solid lightblue;
+    width: 80%;
+    height: 85%;
+
+    .table {
+        width: 100%;
+        margin: 0;
+        table {
+            width: 100%;
+            margin: 0;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<div class="header">
+    <button *ngIf="!currentUser" (click)="login()">
+        login
+    </button>
+    <button *ngIf="currentUser">
+        {{currentUser}}
+    </button>
+    <button *ngIf="currentUser" (click)="logout()">
+        logout
+    </button>
+    <button *ngIf="!currentUser" (click)="reg()">
+        registration
+    </button>
+</div>

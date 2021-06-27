@@ -1,0 +1,28 @@
+<div class="form-wrap">
+    <form [formGroup]="logForm">
+        <div class="form-group">
+            <label>Email</label>
+            <input formControlName="logEmail" [class.input-error]="logForm.get('logEmail').invalid && logForm.get('logEmail').dirty && logForm.get('logEmail').touched" type="email" class="form-control" placeholder="email">
+            <small class="errors" *ngIf="logForm.get('logEmail').errors && logForm.get('logEmail').errors.required && logForm.get('logEmail').dirty && logForm.get('logEmail').touched">
+                empty email!
+            </small>
+            <small class="errors" *ngIf="logForm.get('logEmail').errors && logForm.get('logEmail').errors.email && logForm.get('logEmail').touched">
+                invalid email!
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input formControlName="logPassword" [class.input-error]="logForm.get('logPassword').invalid && logForm.get('logPassword').dirty && logForm.get('logPassword').touched" type="password" class="form-control" placeholder="password">
+            <small class="errors" *ngIf="logForm.get('logPassword').errors && logForm.get('logPassword').errors.required && logForm.get('logPassword').dirty && logForm.get('logPassword').touched">
+                empty password!
+            </small>
+            <small class="errors" *ngIf="logForm.get('logPassword').errors && logForm.get('logPassword').errors.minlength && logForm.get('logPassword').touched">
+                min 8 symbol!
+            </small>
+        </div>
+
+        <button type="submit" *ngIf="data === 'login'" [disabled]="!logForm.valid" (click)="login()" class="btn btn-primary">Login</button>
+        <button type="submit" *ngIf="data === 'reg'" [disabled]="!logForm.valid" (click)="login()" class="btn btn-primary">Signup</button>
+    </form>
+</div>
